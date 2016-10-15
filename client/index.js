@@ -10,13 +10,8 @@ import { configureStore } from './store';
 /**
  * Import global fonts
  */
-//import FontAwesomeness from 'styles/nomodule/font-awesome.scss';
-//import FontAwesomeness from 'fonts/font-awesome/scss/font-awesome.scss';
-//import FontAwesomeness from 'fonts/font-awesome/css/font-awesome.css';
-import FontAwesomeness from 'font-awesome/css/font-awesome.css';
-console.log("FontAwesome direct=" + Object.keys(FontAwesomeness));
-//import FontAwesomeness2 from 'font-awesome/scss/font-awesome.scss';
-//console.log("FontAwesome node_modules=" + Object.keys(FontAwesomeness2));
+import 'font-awesome/css/font-awesome.css';
+import 'source-sans-pro/source-sans-pro.css';
 
 // Initialize store
 const store = configureStore(window.__INITIAL_STATE__);

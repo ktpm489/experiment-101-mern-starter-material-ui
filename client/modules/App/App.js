@@ -16,7 +16,9 @@ injectTapEventPlugin();
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-const muiTheme = getMuiTheme(lightBaseTheme);
+// const muiTheme = getMuiTheme(lightBaseTheme);
+import MedfxTheme from '../../MedfxTheme';
+const muiTheme = getMuiTheme(lightBaseTheme, MedfxTheme);
 
 // App Bar specific
 // responsive? https://github.com/callemall/material-ui/issues/3614s
@@ -27,7 +29,8 @@ import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
 import NavLogo from './nav-logo.svg';
 // import SvgIcon from 'material-ui/SvgIcon';
-muiTheme.appBar.height = 50;
+//muiTheme.appBar.height = 50;
+
 const FontAwesome = require('react-fontawesome'); // example <FontAwesome name='rocket'/>
 
 
