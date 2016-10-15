@@ -1,20 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-//
-// Font awesome
-//
-// #1 tried https://github.com/Hashnode/mern-starter/issues/197  fabianishere commented on Jul 29 • edited
-// npm install sass-loader node-sass --save-dev
-// OUTCOME: compile accepted scss but font-awesome wasn't showing on the screen
-//
-//import FontAwesomeness from 'styles/nomodule/font-awesome.scss';
-//import FontAwesomeness from 'fonts/font-awesome/scss/font-awesome.scss';
-//import FontAwesomeness from 'fonts/font-awesome/css/font-awesome.css';
-//console.log("FontAwesome direct=" + Object.keys(FontAwesomeness));
-//import FontAwesomeness2 from 'font-awesome/scss/font-awesome.scss';
-//console.log("FontAwesome node_modules=" + Object.keys(FontAwesomeness2));
-var FontAwesome = require('react-fontawesome'); // example <FontAwesome name='rocket'/>
 
 //
 // Material-ui
@@ -26,7 +12,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-//import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+// import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -36,12 +22,13 @@ const muiTheme = getMuiTheme(lightBaseTheme);
 // responsive? https://github.com/callemall/material-ui/issues/3614s
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
-import ActionHome from 'material-ui/svg-icons/action/home';
+// import ActionHome from 'material-ui/svg-icons/action/home';
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
 import NavLogo from './nav-logo.svg';
-import SvgIcon from 'material-ui/SvgIcon';
+// import SvgIcon from 'material-ui/SvgIcon';
 muiTheme.appBar.height = 50;
+const FontAwesome = require('react-fontawesome'); // example <FontAwesome name='rocket'/>
 
 
 // Import Style
@@ -71,10 +58,6 @@ export class App extends Component {
     this.props.dispatch(toggleAddPost());
   };
 
-  //link={[
-  //{"rel": "stylesheet", "href": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css", "type": "text/css"}
-  //]}
-
   render() {
     return (
       <div>
@@ -100,19 +83,19 @@ export class App extends Component {
               title="Title"
               iconElementLeft={
                 <div>
-                  <IconButton tooltip="MEDfx Corporation" iconStyle={{width: 38, height: 38}} style={{padding: '.1rem', width: 45, height: 45}}>
-                    <img src={NavLogo} alt='Logo'  />
+                  <IconButton tooltip="MEDfx Corporation" iconStyle={{ width: 38, height: 38 }} style={{ padding: '.1rem', width: 45, height: 45 }}>
+                    <img src={NavLogo} alt="Logo" />
                   </IconButton>
-                  <FontAwesome name='rocket'/>
+                  <FontAwesome name="rocket" />
                   <FlatButton
                     href="https://github.com/callemall/material-ui"
-                    secondary={true}
-                    icon={<FontIcon className="fa fa-paw"/>}
-                    style={{margin: 12}}
+                    secondary
+                    icon={<FontIcon className="fa fa-paw" />}
+                    style={{ margin: 12 }}
                   />
-                  {/*<IconButton tooltip="SVG Icon">
+                  {/* <IconButton tooltip="SVG Icon">
                     <ActionHome />
-                  </IconButton>*/}
+                  </IconButton> */}
                 </div>
               }
               iconClassNameRight="muidocs-icon-navigation-expand-more" />
