@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-
 //
 // Material-ui
 //
@@ -18,6 +17,11 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 // const muiTheme = getMuiTheme(lightBaseTheme);
 import MedfxTheme from '../../MedfxTheme';
+
+// default server side userAgent to 'all' (#4) to avoid annoying warning
+if (typeof navigator === 'undefined') {
+  global.navigator = { userAgent: 'all' };
+}
 const muiTheme = getMuiTheme(lightBaseTheme, MedfxTheme);
 
 // App Bar specific
@@ -29,7 +33,6 @@ import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
 import NavLogo from './nav-logo.svg';
 // import SvgIcon from 'material-ui/SvgIcon';
-//muiTheme.appBar.height = 50;
 
 const FontAwesome = require('react-fontawesome'); // example <FontAwesome name='rocket'/>
 
@@ -101,7 +104,8 @@ export class App extends Component {
                   </IconButton> */}
                 </div>
               }
-              iconClassNameRight="muidocs-icon-navigation-expand-more" />
+              iconClassNameRight="muidocs-icon-navigation-expand-more"
+            />
           </MuiThemeProvider>
           <Header
             switchLanguage={lang => this.props.dispatch(switchLanguage(lang))}

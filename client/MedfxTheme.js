@@ -1,6 +1,5 @@
 import Spacing from 'material-ui/styles/spacing';
-import zIndex from 'material-ui/styles/zIndex';
-import {cyan500, cyan700, redA200} from 'material-ui/styles/colors';
+import { cyan500 } from 'material-ui/styles/colors';
 // import ColorManipulator from 'material-ui/utils/colorManipulator';
 
 
@@ -8,14 +7,13 @@ import {cyan500, cyan700, redA200} from 'material-ui/styles/colors';
 
 export default {
   spacing: Spacing,
-  zIndex: zIndex,
   fontFamily: '"Source Sans Pro", sans-serif',
   palette: {
     primary1Color: cyan500,
   },
   appBar: {
     height: 50,
-  }
+  },
 };
 
 /*
