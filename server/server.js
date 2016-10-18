@@ -50,11 +50,6 @@ mongoose.connect(serverConfig.mongoURL, (error) => {
   dummyData();
 });
 
-// Set user agent to be same on server as client
-// http://stackoverflow.com/questions/35481084/react-starter-kit-and-material-ui-useragent-should-be-supplied-in-the-muitheme
-global.navigator = global.navigator || {};
-global.navigator.userAgent = global.navigator.userAgent || 'all';
-
 // Apply body Parser and server public assets and routes
 app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));

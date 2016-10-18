@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 
 //
 // Material-ui
@@ -65,6 +66,7 @@ export class App extends Component {
   };
 
   render() {
+    console.log("App: property intl=" + this.props.intl );
     return (
       <div>
         {this.state.isMounted && !window.devToolsExtension && process.env.NODE_ENV === 'development' && <DevTools />}
