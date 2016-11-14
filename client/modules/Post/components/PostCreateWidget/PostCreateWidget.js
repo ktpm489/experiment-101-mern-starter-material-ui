@@ -5,10 +5,6 @@ import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import styles from './PostCreateWidget.css';
 
 export class PostCreateWidget extends Component {
-  constructor(props) {
-    console.log("PostCreateWidget: constructing");
-    super(props);
-  }
 
   addPost = () => {
     const nameRef = this.refs.name;
@@ -21,7 +17,7 @@ export class PostCreateWidget extends Component {
   };
 
   render() {
-    console.log(`PostCreateWidget.render: property intl=${typeof this.props.intl} ${Object.keys(this.props.intl)}` );
+    // console.log(`PostCreateWidget.render: property intl=${typeof this.props.intl} ${Object.keys(this.props.intl)}` );
     const cls = `${styles.form} ${(this.props.showAddPost ? styles.appear : '')}`;
     return (
       <div className={cls}>

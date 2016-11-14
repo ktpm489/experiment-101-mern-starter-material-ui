@@ -1,6 +1,6 @@
 import test from 'ava';
 import { reducerTest } from 'redux-ava';
-import appReducer, { getShowAddPost } from '../AppReducer';
+import appReducer, { getShowAddPost, getCurrentAppId } from '../AppReducer';
 import { toggleAddPost } from '../AppActions';
 
 test('action for TOGGLE_ADD_POST is working', reducerTest(
@@ -15,3 +15,9 @@ test('getShowAddPost selector', t => {
     app: { showAddPost: false },
   }), false);
 });
+
+test('getCurrentAppId.selector', t => {
+  t.is(getCurrentAppId({
+    app: { currentAppId: 1},
+  }), 1);
+})

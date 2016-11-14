@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
+import { getCurrentAppId } from './AppReducer';
 
 //
 // Material-ui
@@ -28,12 +29,17 @@ const muiTheme = getMuiTheme(lightBaseTheme, MedfxTheme);
 // App Bar specific
 // responsive? https://github.com/callemall/material-ui/issues/3614s
 import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
 // import ActionHome from 'material-ui/svg-icons/action/home';
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
 import NavLogo from './nav-logo.svg';
 // import SvgIcon from 'material-ui/SvgIcon';
+import MenuItem from 'material-ui/MenuItem';
+import IconMenu from 'material-ui/IconMenu';
+import IconButton from 'material-ui/IconButton';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+
+
 
 const FontAwesome = require('react-fontawesome'); // example <FontAwesome name='rocket'/>
 
@@ -44,12 +50,25 @@ import styles from './App.css';
 // Import Components
 import Helmet from 'react-helmet';
 import DevTools from './components/DevTools';
+import AppManager from './components/AppManager/AppManager'
+import GlobalHeader from './components/GlobalNav/GlobalHeader';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
 // Import Actions
-import { toggleAddPost } from './AppActions';
+import { setCurrentAppId, toggleAddPost } from './AppActions';
 import { switchLanguage } from '../../modules/Intl/IntlActions';
+
+var apps = {
+  app1: {
+    title: "App Title1!"
+  },
+  app2: {
+    title: "App Title2!"
+  }
+};
+
+console.log("step 1: init: " + JSON.stringify(apps));
 
 export class App extends Component {
   constructor(props) {
@@ -66,7 +85,10 @@ export class App extends Component {
   };
 
   render() {
-    console.log("App: property intl=" + this.props.intl );
+    //debugger;
+    console.log("App: Step 1a: props=: " + Object.keys(this.props));
+    console.log("App: Step 1b: foobar: " + this.props.foobar);
+    console.log("App: Step 1c: appManager: " + this.props.appManager.getTitle);
     return (
       <div>
         {this.state.isMounted && !window.devToolsExtension && process.env.NODE_ENV === 'development' && <DevTools />}
@@ -87,27 +109,10 @@ export class App extends Component {
             ]}
           />
           <MuiThemeProvider muiTheme={muiTheme}>
-            <AppBar
-              title="Title"
-              iconElementLeft={
-                <div>
-                  <IconButton tooltip="MEDfx Corporation" iconStyle={{ width: 38, height: 38 }} style={{ padding: '.1rem', width: 45, height: 45 }}>
-                    <img src={NavLogo} alt="Logo" />
-                  </IconButton>
-                  <FontAwesome name="rocket" />
-                  <FlatButton
-                    href="https://github.com/callemall/material-ui"
-                    secondary
-                    icon={<FontIcon className="fa fa-paw" />}
-                    style={{ margin: 12 }}
-                  />
-                  {/* <IconButton tooltip="SVG Icon">
-                    <ActionHome />
-                  </IconButton> */}
-                </div>
-              }
-              iconClassNameRight="muidocs-icon-navigation-expand-more"
-            />
+            <GlobalHeader
+              foobar={this.props.foobar} appManager={this.props.appManager} poocurrentAppId={this.props.currentAppId}
+              setCurrentAppId={currentAppId => this.props.dispatch(setCurrentAppId(currentAppId))}
+          />
           </MuiThemeProvider>
           <Header
             switchLanguage={lang => this.props.dispatch(switchLanguage(lang))}
@@ -124,6 +129,10 @@ export class App extends Component {
   }
 }
 
+// App.defaultProps = {
+//   appManager: <AppManager />
+// };
+
 App.propTypes = {
   children: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
@@ -134,6 +143,9 @@ App.propTypes = {
 function mapStateToProps(store) {
   return {
     intl: store.intl,
+    foobar: "it worked!",
+    appManager: (<AppManager />),
+    currentAppId: getCurrentAppId(store),
   };
 }
 

@@ -14,7 +14,9 @@ Global Container
     │
     ├───? todo
     │       Navigation
-    │       Branding
+    │       Customer Branding
+    │       MEDfx/Product Branding
+    │       Software version
     │
     └───App Container - contain 1 active App (portal or dashboard or ...)
         │

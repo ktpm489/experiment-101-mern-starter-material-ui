@@ -1,6 +1,9 @@
 export default {
   locale: 'fr',
   messages: {
+    globalHeaderTitle: 'Lifescape',
+    globalHeaderAppName: 'Gestionnaire de Soins',
+    globalHeaderDashboardShortcut: 'Gestionnaire de Soins',
     siteTitle: 'MERN blog de démarrage',
     addPost: 'Ajouter Poster',
     switchLanguage: 'Changer de langue',

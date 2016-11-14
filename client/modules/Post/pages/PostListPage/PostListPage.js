@@ -25,13 +25,11 @@ class PostListPage extends Component {
   };
 
   handleAddPost = (name, title, content) => {
-    console.log("PostListPage.handleAddPost: entered");
     this.props.dispatch(toggleAddPost());
     this.props.dispatch(addPostRequest({ name, title, content }));
   };
 
   render() {
-    console.log("PostListPage.render: entered");
     return (
       <div>
         <PostCreateWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} />
